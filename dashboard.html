@@ -20,24 +20,43 @@
         </head>
         <body>
             <div>
-                <!-- Navigation bar to switch between Dashboard and Why Permissions screens-->
+                <!-- navigation bar to switch between Dashboard and Why Permissions screens-->
                 <div class="navbar">
                 <ul>
                 <li><a href="./dashboard.html">Dashboard</a></li>
                 <li><a href="./whypermissions.html">Why Permissions</a></li>
+                </ul>
                 </div>
                 <h1>Dashboard</h1>
-                <!--Enter ChatGPT dashboard page-->
+                <!--enter chatgpt dashboard page-->
                 <button id="chatgpt-btn">ChatGPT</button>
-                <div id:="chatgpt-info" hidden>
+                <div id="chatgpt-info" hidden>
                     <h2>ChatGPT</h2>
                     <button id="open-app-btn">Open Application</button>
                 </div>
-                <!--Always Ask popup-->
-                <dialog id="popup">
+                <!--always ask popup-->
+                <dialog id="always-ask-popup">
                     <p>ChatGPT would like to access the following: Always Ask</p>
-                    <button id="allow-btn">Allow</button>
-                    <button id="dont-allow-btn">Don't Allow</button>
+                    <button id="always-ask-allow-btn">Allow</button>
+                    <button id="always-ask-dont-ask-btn">Don't Ask</button>
+                </dialog>
+                <!--allow read actions popup-->
+                <dialog id="read-actions-popup">
+                    <p>ChatGPT would like to access the following: Allow Read Actions</p>
+                    <button id="read-actions-allow-btn">Allow</button>
+                    <button id="read-actions-dont-allow-btn">Don't Allow</button>
+                </dialog>
+                <!--allow low-risk actions popup-->
+                <dialog id="low-risk-actions-popup">
+                    <p>ChatGPT would like to access the following: Allow Low-Risk Actions</p>
+                    <button id="low-risk-actions-allow-btn">Allow</button>
+                    <button id="low-risk-actions-dont-allow-btn">Don't Allow</button>
+                </dialog>
+                <!--allow all actions popup-->
+                <dialog id="allow-all-actions-popup">
+                    <p>ChatGPT would like to access the following: Allow All Actions</p>
+                    <button id="allow-all-actions-allow-btn">Allow</button>
+                    <button id="allow-all-actions-dont-allow-btn">Don't Allow</button>
                 </dialog>
             </div>
         </body>
