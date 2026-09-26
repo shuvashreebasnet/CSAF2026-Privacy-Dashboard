@@ -16,7 +16,7 @@
             <title>Dashboard</title>
             <link rel = "stylesheet" href = "styles.css" /> <!--Our styling elements stored here-->
             <link rel = "icon" href = ""> <!--sheCodes logo here?-->
-            <script src = "index.js"></script> <!--Our logic functions stored here-->
+            <script src = "index.js" defer></script> <!--Our logic functions stored here-->
         </head>
         <body>
             <div>
@@ -24,10 +24,21 @@
                 <div class="navbar">
                 <ul>
                 <li><a href="./dashboard.html">Dashboard</a></li>
-                <li><a window.location.href="./whypermissions.html">Why Permissions</a></li>
+                <li><a href="./whypermissions.html">Why Permissions</a></li>
                 </div>
                 <h1>Dashboard</h1>
-
+                <!--Enter ChatGPT dashboard page-->
+                <button id="chatgpt-btn">ChatGPT</button>
+                <div id:="chatgpt-info" hidden>
+                    <h2>ChatGPT</h2>
+                    <button id="open-app-btn">Open Application</button>
+                </div>
+                <!--Always Ask popup-->
+                <dialog id="popup">
+                    <p>ChatGPT would like to access the following: Always Ask</p>
+                    <button id="allow-btn">Allow</button>
+                    <button id="dont-allow-btn">Don't Allow</button>
+                </dialog>
             </div>
         </body>
     </html>
