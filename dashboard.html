@@ -33,7 +33,17 @@
                 <div id="chatgpt-info" hidden>
                     <h2>ChatGPT</h2>
                     <button id="open-app-btn">Open Application</button>
+                    
+                    <!--permission use list-->
+                    <h3>ChatGPT Permission Use</h3>
+                    <ul>
+                        <li>Always Ask: <span id="always-ask-count">0</span> times</li>
+                        <li>Allow Read Actions: <span id="read-actions-count">0</span> times</li>
+                        <li>Allow Low-Risk Actions: <span id="low-risk-actions-count">0</span> times</li>
+                        <li>Allow All Actions: <span id="allow-all-actions-count">0</span> times</li>
+                    </ul>
                 </div>
+
                 <!--always ask popup-->
                 <dialog id="always-ask-popup">
                     <p>ChatGPT would like to access the following: Always Ask</p>

@@ -36,6 +36,8 @@ if(chatgptBtn) {
 
     //when allow/don't allow is clicked for each popup, close it, and display the next one
     alwaysaskallowbtn.addEventListener("click", () => {
+        alwaysasknum = alwaysasknum + 1;    //add 1 to the permission use count
+        alwaysaskcount.textContent = alwaysasknum;  //show number on page
         alwaysaskpopup.close();
         readactionspopup.showModal();
     });
@@ -46,6 +48,8 @@ if(chatgptBtn) {
         
     //next popup
     readactionsallowbtn.addEventListener("click", () => {
+        readactionsnum = readactionsnum + 1;    //add 1 to the permission use count
+        readactionscount.textContent = readactionsnum;  //show number on page
         readactionspopup.close();
         lowriskactionspopup.showModal();
     });
@@ -56,6 +60,8 @@ if(chatgptBtn) {
 
     //next popup
     lowriskallowbtn.addEventListener("click", () => {
+        lowriskactionsnum = lowriskactionsnum + 1;    //add 1 to the permission use count
+        lowriskactionscount.textContent = lowriskactionsnum;  //show number on page
         lowriskactionspopup.close();
         allowallactionspopup.showModal();
     });
@@ -66,9 +72,23 @@ if(chatgptBtn) {
 
     //next popup
     allowallallowbtn.addEventListener("click", () => {
+        allowallactionsnum = allowallactionsnum + 1;    //add 1 to the permission use count
+        allowallactionscount.textContent = allowallactionsnum;  //show number on page
         allowallactionspopup.close();
     });
     allowalldontallowbtn.addEventListener("click", () => {
         allowallactionspopup.close();
     });
+
+    //permission use counts (number on the page)
+    const alwaysaskcount = document.getElementById('always-ask-count');
+    const readactionscount = document.getElementById('read-actions-count');
+    const lowriskactionscount = document.getElementById('low-risk-actions-count');
+    const allowallactionscount = document.getElementById('allow-all-actions-count');
+    //number of times each permission was allowed
+    let alwaysasknum = 0;
+    let readactionsnum = 0;
+    let lowriskactionsnum = 0;
+    let allowallactionsnum = 0;
+    
 }
