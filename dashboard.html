@@ -19,14 +19,49 @@
             <script src = "index.js" defer></script> <!--Our logic functions stored here-->
         </head>
         <body>
-            <div>
-                <!-- Navigation bar to switch between Dashboard and Why Permissions screens-->
-                <div class="navbar">
-                <ul>
-                <li><a href="./dashboard.html">Dashboard</a></li>
-                <li><a href="./whypermissions.html">Why Permissions</a></li>
+            <div class = "dashboard-layout">
+                <!--Dashboard page header-->
+                <div class = "header dashboard-header">
+                    <div class = "fixed-header">
+                        <img src = ".\assets\sheCodes26Icon.png" alt="sheCodes logo">
+                        <h2>sheCodes</h2>
+                        <h1>Dashboard</h1>
+                    </div>
+                    <!-- Navigation bar to switch between Dashboard and Why Permissions screens-->
+                    <div class="navbar">
+                        <ul>
+                            <li><a href="./dashboard.html" class = "active">Dashboard</a></li>
+                            <li><a href="./whypermissions.html">Why Permissions</a></li>
+                        </ul>
+                    </div>
+                   <h3>Welcome!</h3>
+                    <p>Select an app to review its permission use.</p>
                 </div>
-                <h1>Dashboard</h1>
+                <div class="dashboard-content">
+                    <!--container for all apps-->
+                    <div class = "apps-container">
+                        <img src = ".\assets\chatGPT.png" alt="ChatGPT" data-app="chatgpt" role="button" tabindex="0">
+                        <img src = ".\assets\tiktok.png" alt="TikTok" data-app="tiktok" role="button" tabindex="0">
+                        <img src = ".\assets\instagram.png" alt="Instagram" data-app="instagram" role="button" tabindex="0">
+                        <img src = ".\assets\temu.png" alt="Temu" data-app="temu" role="button" tabindex="0">
+                        <img src = ".\assets\whatsapp.png" alt="WhatsApp" data-app="whatsapp" role="button" tabindex="0">
+                        <img src = ".\assets\facebook.png" alt="Facebook" data-app="facebook" role="button" tabindex="0">
+                    </div>
+                    <div class = "desc-container">
+                        <img id="description-image" alt="" hidden>
+                        <h1 id="description-title">Who's Watching? Understanding App Permissions &amp; Phone Privacy</h1>
+                        <p id="description-text">This demo shows how everyday apps can access sensitive phone permissions 
+                            such as location, microphone, camera, contacts, and device sensors. Visitors 
+                            will use a stimulated privacy board that displays which apps accessed certain 
+                            permissions, when the access occurred, and whether that access makes sense 
+                            based on app’s purpose. Through this interactive experience, visitors will learn 
+                            how to recognize unnecessary permission access, make more informed privacy decisions, 
+                            and better understand what information their apps may be accessing in the background.</p>
+                    </div>
+                </div>
+                
+
+
                 <!--Enter ChatGPT dashboard page-->
                 <button id="chatgpt-btn">ChatGPT</button>
                 <div id:="chatgpt-info" hidden>
@@ -39,6 +74,7 @@
                     <button id="allow-btn">Allow</button>
                     <button id="dont-allow-btn">Don't Allow</button>
                 </dialog>
+
             </div>
         </body>
     </html>
