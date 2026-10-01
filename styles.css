@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #FFEFF7;
+    overflow-x: hidden;
+}
+/* dashboard */
+.dashboard-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+/* navbar src = https://www.w3schools.com/howto/howto_css_vertical_menu.asp */
+.navbar {
+    width: 200px;
+    flex: 0 0 200px;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.dashboard-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.navbar a {
+    background: #FFEFF7;
+    font-size: 20px;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color:#f692bd;
+}
+
+.navbar a.active {
+    background: #dd2782;
+    color: white;
+}
+
+/*header styles*/
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: 64px;
+    padding: 8px 16px;
+    background: #FFEFF7;
+    color: black;
+    font-size: 16px;
+    background: white;
+}
+
+.fixed-header img {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    object-fit: contain;
+}
+
+.header {
+    padding: 30px;
+    text-align: center;
+    background: #FFEFF7;
+    color: black;
+    font-size: 30px;
+}
+
+.dashboard-header {
+    padding-top: 80px;
+}
+
+/*app container styles*/
+.apps-container {
+    box-sizing: border-box;
+    flex: 0 1 400px;
+    width: 100%;
+    max-width: 400px;
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    background: #f692bd;   
+    border: solid 0px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.apps-container img {
+    width: 100%;
+    height: auto;
+    transition: filter 150ms ease, transform 150ms ease;
+}
+
+.apps-container img:hover {
+    filter: brightness(1.15);
+    transform: scale(1.05);
+}
+
+/*description container styles*/
+.desc-container {
+    box-sizing: border-box;
+    flex: 0 1 500px;
+    width: 100%;
+    max-width: 500px;
+    min-height: 500px;
+    display: row;
+    gap: 30px;
+    padding: 30px;
+    background: #f692bd;   
+    border: solid 0px;
+    border-radius: 20px;
+    font-size: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.desc-container img {
+    display: block;
+    width: min(100%, 180px);
+    height: auto;
+    margin: 0 auto 20px;
+    object-fit: contain;
+}
+
+.desc-container img[hidden] {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .dashboard-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar {
+        width: min(100%, 400px);
+        flex-basis: auto;
+    }
+}
