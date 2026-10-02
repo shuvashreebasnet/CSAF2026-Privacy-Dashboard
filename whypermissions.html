@@ -30,7 +30,7 @@
 				<div class="permission-controls">
 					<!-- Selects which app's permission cards are displayed. -->
 					<div class="permission-app-picker">
-						<label for="permission-app-select">Choose an app</label>
+						<label for="permission-app-select">Choose an App</label>
 						<select id="permission-app-select">
 							<option value="chatgpt">ChatGPT</option>
 							<option value="tiktok">TikTok</option>
@@ -40,18 +40,19 @@
 							<option value="facebook">Facebook</option>
 						</select>
 					</div>
-					<!-- Lets visitors choose the permission-description font size. -->
-					<fieldset class="description-size-picker">
-						<legend>Description text size</legend>
-						<label><input type="radio" name="description-size" value="20" checked>20px</label>
-						<label><input type="radio" name="description-size" value="25">25px</label>
-						<label><input type="radio" name="description-size" value="30">30px</label>
-					</fieldset>
 				</div>
 			</header>
 
 			<!-- Filled with the selected app's permission records by index.js. -->
 			<section class="permission-options" id="permission-options" aria-label="ChatGPT permission levels"></section>
 		</main>
+
+		<!-- Lets visitors choose the permission-description font size. -->
+		<fieldset class="description-size-picker">
+			<legend>Text Size</legend>
+			<label><input type="radio" name="description-size" value="20" checked>20px</label>
+			<label><input type="radio" name="description-size" value="25">25px</label>
+			<label><input type="radio" name="description-size" value="30">30px</label>
+		</fieldset>
 	</body>
 </html>
