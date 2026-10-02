@@ -53,6 +53,7 @@
                 
                 <!-- Native dialog populated with the selected app's details. -->
                 <dialog id="app-modal" aria-labelledby="modal-title">
+                    <span class="permission-step">Permission 1 of 1</span>
                     <div class="modal-content">
                         <img id="modal-image" alt="">
                         <h2 id="modal-title"></h2>
@@ -67,6 +68,7 @@
                 <!--chatgpt permission sequence (opened by Review Permissions when ChatGPT is selected)-->
                 <!--always ask popup-->
                 <dialog id="always-ask-popup" class="permission-popup">
+                    <span class="permission-step">Permission 1 of 4</span>
                     <div class="modal-content">
                         <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
                         <h2>ChatGPT would like to access the following: Always Ask</h2>
@@ -79,6 +81,7 @@
                 </dialog>
                 <!--allow read actions popup-->
                 <dialog id="read-actions-popup" class="permission-popup">
+                    <span class="permission-step">Permission 2 of 4</span>
                     <div class="modal-content">
                         <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
                         <h2>ChatGPT would like to access the following: Allow Read Actions</h2>
@@ -91,6 +94,7 @@
                 </dialog>
                 <!--allow low-risk actions popup-->
                 <dialog id="low-risk-actions-popup" class="permission-popup">
+                    <span class="permission-step">Permission 3 of 4</span>
                     <div class="modal-content">
                         <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
                         <h2>ChatGPT would like to access the following: Allow Low-Risk Actions</h2>
@@ -103,6 +107,7 @@
                 </dialog>
                 <!--allow all actions popup-->
                 <dialog id="allow-all-actions-popup" class="permission-popup">
+                    <span class="permission-step">Permission 4 of 4</span>
                     <div class="modal-content">
                         <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
                         <h2>ChatGPT would like to access the following: Allow All Actions</h2>
