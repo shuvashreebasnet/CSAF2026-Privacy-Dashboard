@@ -47,8 +47,8 @@
                 <!--always ask popup-->
                 <dialog id="always-ask-popup">
                     <p>ChatGPT would like to access the following: Always Ask</p>
-                    <button id="always-ask-allow-btn">Allow</button>
-                    <button id="always-ask-dont-ask-btn">Don't Ask</button>
+                    <button id="always-ask-allow-btn">Always Ask</button>
+                    <button id="always-ask-dont-allow-btn">Don't Ask</button>
                 </dialog>
                 <!--allow read actions popup-->
                 <dialog id="read-actions-popup">
@@ -67,6 +67,13 @@
                     <p>ChatGPT would like to access the following: Allow All Actions</p>
                     <button id="allow-all-actions-allow-btn">Allow</button>
                     <button id="allow-all-actions-dont-allow-btn">Don't Allow</button>
+                </dialog>
+                <!--explanation screen (reused after every popup, JavaScript fills in the words)-->
+                <dialog id="explain-popup">
+                    <h3 id="explain-title"></h3>
+                    <p id="explain-verdict"></p>
+                    <p id="explain-text"></p>
+                    <button id="explain-next-btn">Next</button>
                 </dialog>
             </div>
         </body>
