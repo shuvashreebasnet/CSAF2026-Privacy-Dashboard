@@ -8,6 +8,10 @@ body {
     background: #FFEFF7;
     overflow-x: hidden;
 }
+
+p {
+    font-size: 20px;
+}
 /* dashboard */
 .dashboard-layout {
     display: flex;
@@ -89,6 +93,37 @@ body {
     padding-top: 80px;
 }
 
+.dashboard-layout > .header .navbar,
+.why-permissions-page .navbar {
+    position: fixed;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    width: 200px;
+    overflow-y: auto;
+    background: #dd2782;
+}
+
+.dashboard-layout > .header .navbar {
+    flex-basis: 200px;
+}
+
+.dashboard-layout > .header .navbar a,
+.why-permissions-page .navbar a {
+    min-height: 48px;
+}
+
+.dashboard-layout > .header {
+    padding-left: 230px;
+    text-align: left;
+}
+
+.dashboard-layout > .dashboard-content {
+    width: calc(100% - 200px);
+    margin-left: 200px;
+}
+
 /*app container styles*/
 .apps-container {
     box-sizing: border-box;
@@ -99,12 +134,14 @@ body {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: center;
-    gap: 30px;
-    padding: 30px;
-    background: #f692bd;   
-    border: solid 0px;
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    display: grid;
+    gap: 12px;
+    min-height: 112px;
+    padding: 16px 20px;
+    border: 1px solid rgba(133, 20, 77, 0.2);
+    border-radius: 10px;
+    background: #f9c5dc;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 .apps-container img {
@@ -133,6 +170,10 @@ body {
     border-radius: 20px;
     font-size: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    gap: 12px;
+    border-radius: 10px;
+    background: #f9c5dc;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 .desc-container img {
@@ -220,14 +261,214 @@ body {
     background: #f3f3f3;
 }
 
+/* why permissions page */
+.why-permissions-page {
+    min-height: 100vh;
+    padding-top: 64px;
+}
+
+.why-permissions-content {
+    width: min(100% - 200px, 1060px);
+    margin: 0 0 0 200px;
+    padding: 24px 32px 40px;
+}
+
+.permission-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.permission-heading h2 {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #f692bd;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.permission-heading p {
+    max-width: 620px;
+    font-size: var(--permission-description-size, 20px);
+    line-height: 1.5;
+}
+
+/* Style the app selector and the permission cards it controls. */
+.permission-app-picker {
+    display: grid;
+    gap: 6px;
+    min-width: 190px;
+}
+
+.permission-controls {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.permission-app-picker label {
+    font-size: 14px;
+}
+
+.permission-app-picker select {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 32px 8px 12px;
+    border: 1px solid #dd2782;
+    border-radius: 6px;
+    background: white;
+    color: black;
+    font: inherit;
+}
+
+/* Style the 20px, 25px, and 30px description-size choices. */
+.description-size-picker {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 42px;
+    padding: 4px;
+    border: 1px solid #dd2782;
+    border-radius: 6px;
+}
+
+.description-size-picker legend {
+    padding: 0 4px;
+    font-size: 14px;
+}
+
+.description-size-picker label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.description-size-picker label:has(input:checked) {
+    background: #f692bd;
+}
+
+.permission-options {
+    display: grid;
+    gap: 16px;
+}
+
+.permission-option {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    align-items: start;
+    gap: 12px;
+    min-height: 112px;
+    padding: 16px 20px;
+    border: 1px solid rgba(133, 20, 77, 0.2);
+    border-radius: 10px;
+    background: #f9c5dc;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.recommended-option {
+    background: #f7b2d0;
+}
+
+.permission-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: #dd2782;
+}
+
+.permission-copy h3 {
+    margin: 2px 0 5px;
+    font-size: 16px;
+}
+
+/* Use the size selected for the permission descriptions. */
+.permission-copy p {
+    font-size: var(--permission-description-size, 20px);
+    line-height: 1.35;
+}
+
+.permission-label {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: #dd2782;
+    color: white;
+    font-size: 12px;
+}
+
 @media (max-width: 700px) {
     .dashboard-content {
         flex-direction: column;
         align-items: center;
     }
 
+    .dashboard-layout > .header .navbar,
+    .why-permissions-page .navbar {
+        position: static;
+        flex-basis: auto;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .dashboard-layout > .header .navbar {
+        width: calc(100% + 60px);
+        margin-left: -30px;
+    }
+
+    .dashboard-layout > .header {
+        padding-left: 30px;
+        text-align: center;
+    }
+
+    .dashboard-layout > .dashboard-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
     .navbar {
         width: min(100%, 400px);
         flex-basis: auto;
+    }
+
+    .why-permissions-content {
+        width: 100%;
+        margin: 0;
+        padding: 24px 16px;
+    }
+
+    .permission-option {
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 10px;
+        padding: 14px;
+    }
+
+    .permission-heading {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .permission-controls {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .permission-app-picker {
+        min-width: 0;
+    }
+
+    .permission-mark {
+        width: 34px;
+        height: 34px;
     }
 }
