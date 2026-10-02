@@ -64,6 +64,67 @@
                     </form>
                 </dialog>
 
+                <!--chatgpt permission sequence (opened by Review Permissions when ChatGPT is selected)-->
+                <!--always ask popup-->
+                <dialog id="always-ask-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
+                        <h2>ChatGPT would like to access the following: Always Ask</h2>
+                        <p>ChatGPT asks before reading app information or making changes.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="always-ask-allow-btn">Always Ask</button>
+                        <button id="always-ask-dont-allow-btn">Don't Ask</button>
+                    </div>
+                </dialog>
+                <!--allow read actions popup-->
+                <dialog id="read-actions-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
+                        <h2>ChatGPT would like to access the following: Allow Read Actions</h2>
+                        <p>ChatGPT reads without asking but asks before making changes.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="read-actions-allow-btn">Allow</button>
+                        <button id="read-actions-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+                <!--allow low-risk actions popup-->
+                <dialog id="low-risk-actions-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
+                        <h2>ChatGPT would like to access the following: Allow Low-Risk Actions</h2>
+                        <p>ChatGPT automatically approves low-risk actions. Higher-risk actions may need confirmation.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="low-risk-actions-allow-btn">Allow</button>
+                        <button id="low-risk-actions-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+                <!--allow all actions popup-->
+                <dialog id="allow-all-actions-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
+                        <h2>ChatGPT would like to access the following: Allow All Actions</h2>
+                        <p>ChatGPT can perform supported actions without additional approval prompts.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="allow-all-actions-allow-btn">Allow</button>
+                        <button id="allow-all-actions-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+                <!--explanation screen (reused after every popup, JavaScript fills in the words)-->
+                <dialog id="explain-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <h2 id="explain-title"></h2>
+                        <p id="explain-verdict"></p>
+                        <p id="explain-text"></p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="explain-next-btn">Next</button>
+                    </div>
+                </dialog>
+
             </div>
         </body>
     </html>

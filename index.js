@@ -1,3 +1,125 @@
+//the first chatgpt popup (only exists on the dashboard page)
+const alwaysaskpopup = document.getElementById('always-ask-popup');
+
+//only run this on the page that has the chatgpt popups
+if (alwaysaskpopup) {
+    //the other popups
+    const readactionspopup = document.getElementById('read-actions-popup');
+    const lowriskactionspopup = document.getElementById('low-risk-actions-popup');
+    const allowallactionspopup = document.getElementById('allow-all-actions-popup');
+
+    //popup buttons
+    const alwaysaskallowbtn = document.getElementById('always-ask-allow-btn');
+    const alwaysaskdontallowbtn = document.getElementById('always-ask-dont-allow-btn');
+    const readactionsallowbtn = document.getElementById('read-actions-allow-btn');
+    const readactionsdontallowbtn = document.getElementById('read-actions-dont-allow-btn');
+    const lowriskallowbtn = document.getElementById('low-risk-actions-allow-btn');
+    const lowriskdontallowbtn = document.getElementById('low-risk-actions-dont-allow-btn');
+    const allowallallowbtn = document.getElementById('allow-all-actions-allow-btn');
+    const allowalldontallowbtn = document.getElementById('allow-all-actions-dont-allow-btn');
+
+    //how many times each permission was allowed
+    //(still counted, ready for a Permission Use list later)
+    let alwaysasknum = 0;
+    let readactionsnum = 0;
+    let lowrisknum = 0;
+    let allowallnum = 0;
+
+    //what each explanation screen says (based on the research doc)
+    const alwaysaskexplain = {
+        title: "Always Ask",
+        verdict: "Recommended",
+        text: "ChatGPT asks before reading app information or making changes. You stay in control of everything it does."
+    };
+    const readactionsexplain = {
+        title: "Allow Read Actions",
+        verdict: "Optional",
+        text: "ChatGPT reads your information without asking, but still asks before making changes."
+    };
+    const lowriskexplain = {
+        title: "Allow Low-Risk Actions",
+        verdict: "Optional",
+        text: "ChatGPT automatically approves low-risk actions. Higher-risk actions may need your confirmation or be denied."
+    };
+    const allowallexplain = {
+        title: "Allow All Actions",
+        verdict: "Optional",
+        text: "ChatGPT can take supported actions without asking for approval. This carries elevated risk, which is why standard account and workspace settings don't offer it."
+    };
+
+    //the explanation screen and its parts
+    const explainpopup = document.getElementById('explain-popup');
+    const explaintitle = document.getElementById('explain-title');
+    const explainverdict = document.getElementById('explain-verdict');
+    const explaintext = document.getElementById('explain-text');
+    const explainnextbtn = document.getElementById('explain-next-btn');
+
+    //remembers which popup comes after the explanation
+    let nextpopup = null;
+
+    //fills in the explanation screen and opens it
+    function showExplanation(explain, next) {
+        explaintitle.textContent = explain.title;
+        explainverdict.textContent = explain.verdict;
+        explaintext.textContent = explain.text;
+        nextpopup = next;
+        //last screen says "Done", the others say "Next"
+        explainnextbtn.textContent = next ? "Next" : "Done";
+        explainpopup.showModal();
+    }
+
+    //when Next is clicked, close the explanation and open the next popup (if there is one)
+    explainnextbtn.addEventListener("click", () => {
+        explainpopup.close();
+        if (nextpopup) {
+            nextpopup.showModal();
+        }
+    });
+
+    //popup 1 (always ask) → explanation → popup 2
+    alwaysaskallowbtn.addEventListener("click", () => {
+        alwaysasknum = alwaysasknum + 1;
+        alwaysaskpopup.close();
+        showExplanation(alwaysaskexplain, readactionspopup);
+    });
+    alwaysaskdontallowbtn.addEventListener("click", () => {
+        alwaysaskpopup.close();
+        showExplanation(alwaysaskexplain, readactionspopup);
+    });
+
+    //popup 2 (read actions) → explanation → popup 3
+    readactionsallowbtn.addEventListener("click", () => {
+        readactionsnum = readactionsnum + 1;
+        readactionspopup.close();
+        showExplanation(readactionsexplain, lowriskactionspopup);
+    });
+    readactionsdontallowbtn.addEventListener("click", () => {
+        readactionspopup.close();
+        showExplanation(readactionsexplain, lowriskactionspopup);
+    });
+
+    //popup 3 (low-risk actions) → explanation → popup 4
+    lowriskallowbtn.addEventListener("click", () => {
+        lowrisknum = lowrisknum + 1;
+        lowriskactionspopup.close();
+        showExplanation(lowriskexplain, allowallactionspopup);
+    });
+    lowriskdontallowbtn.addEventListener("click", () => {
+        lowriskactionspopup.close();
+        showExplanation(lowriskexplain, allowallactionspopup);
+    });
+
+    //popup 4 (all actions) → explanation → done
+    allowallallowbtn.addEventListener("click", () => {
+        allowallnum = allowallnum + 1;
+        allowallactionspopup.close();
+        showExplanation(allowallexplain, null);
+    });
+    allowalldontallowbtn.addEventListener("click", () => {
+        allowallactionspopup.close();
+        showExplanation(allowallexplain, null);
+    });
+}
 /* for the app descriptions when a user clicks an app icon */
 const appDescriptions = {
 	chatgpt: {
@@ -222,5 +344,13 @@ if (initialDescriptionSize && whyPermissionsPage) {
 
 // Bind the popup control only on pages that include the dashboard modal.
 if (reviewPermissionsButton && appModal) {
-	reviewPermissionsButton.addEventListener("click", () => appModal.showModal());
+	reviewPermissionsButton.addEventListener("click", () => {
+		//ChatGPT plays the full permission sequence with explanations
+		if (descriptionTitle.textContent === "ChatGPT") {
+			alwaysaskpopup.showModal();
+		} else {
+			//every other app keeps the original single popup
+			appModal.showModal();
+		}
+	});
 }

@@ -479,3 +479,42 @@ p {
         height: 34px;
     }
 }
+
+/* chatgpt permission sequence: matches the #app-modal styles above */
+.permission-popup {
+    width: min(90vw, 480px);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 24px;
+    background: white;
+    color: black;
+    overflow: hidden;
+}
+
+.permission-popup .modal-content img {
+    display: block;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 16px;
+    object-fit: contain;
+}
+
+.permission-popup p {
+    margin-top: 12px;
+}
+
+.permission-popup::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* the explanation screen has one button, so it takes the full width */
+#explain-popup .modal-actions {
+    grid-template-columns: 1fr;
+}
+
+/* "Recommended" / "Optional" in sheCodes pink */
+#explain-verdict {
+    color: #dd2782;
+    font-weight: bold;
+}
