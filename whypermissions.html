@@ -1,32 +1,58 @@
 <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <!-- head
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Why Permissions | sheCodes</title>
+		<link rel="stylesheet" href="styles.css">
+		<script src="index.js" defer></script>
+	</head>
+	<body class="why-permissions-page">
+		<header class="fixed-header">
+			<img src="./assets/sheCodes26Icon.png" alt="sheCodes logo">
+			<h2>sheCodes</h2>
+			<h1>Why Permissions</h1>
+		</header>
 
-            Purpose:
-            - Title used here shows up in the browser tab
-            - Link to the favicon (small image that appears in the browser tab)
-            - Link to the CSS file (used to style the webpage)
+		<nav class="navbar" aria-label="Main navigation">
+			<ul>
+				<li><a href="./dashboard.html">Dashboard</a></li>
+				<li><a href="./whypermissions.html" class="active" aria-current="page">Why Permissions</a></li>
+			</ul>
+		</nav>
 
-            When To Modify:
-            - [ ] Project 2 (REQUIRED FEATURE) 
-            - [ ] Project 2 (STRETCH FEATURE) (favicon)
-            - [ ] Any time after
-            -->
-            <title>Dashboard</title>
-            <link rel = "stylesheet" href = "styles.css" />
-            <link rel = "icon" href = ""> <!--sheCodes logo here?-->
-            <script src = "index.js" defer></script>
-        </head>
-        <body>
-            <div>
-                <div class="navbar">
-                <ul>
-                <li><a href="./dashboard.html">Dashboard</a></li>
-                <li><a href="./whypermissions.html">Why Permissions</a></li>
-                </div>
-                <h1>Why Permissions</h1>
+		<main class="why-permissions-content">
+			<header class="permission-heading">
+				<div class="permission-heading-copy">
+					<h2 id="selected-app-name">ChatGPT</h2>
+					<p>Understand the permission choices available and what can happen when you allow or deny access.</p>
+				</div>
+				<div class="permission-controls">
+					<!-- Selects which app's permission cards are displayed. -->
+					<div class="permission-app-picker">
+						<label for="permission-app-select">Choose an App</label>
+						<select id="permission-app-select">
+							<option value="chatgpt">ChatGPT</option>
+							<option value="tiktok">TikTok</option>
+							<option value="instagram">Instagram</option>
+							<option value="temu">Temu</option>
+							<option value="whatsapp">WhatsApp</option>
+							<option value="facebook">Facebook</option>
+						</select>
+					</div>
+				</div>
+			</header>
 
-            </div>
-        </body>
-    </html>
+			<!-- Filled with the selected app's permission records by index.js. -->
+			<section class="permission-options" id="permission-options" aria-label="ChatGPT permission levels"></section>
+		</main>
+
+		<!-- Lets visitors choose the permission-description font size. -->
+		<fieldset class="description-size-picker">
+			<legend>Text Size</legend>
+			<label><input type="radio" name="description-size" value="20" checked>20px</label>
+			<label><input type="radio" name="description-size" value="25">25px</label>
+			<label><input type="radio" name="description-size" value="30">30px</label>
+		</fieldset>
+	</body>
+</html>

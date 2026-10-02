@@ -1,80 +1,130 @@
 <!DOCTYPE html>
     <html lang="en">
         <head>
-            <!-- head
-
-            Purpose:
-            - Title used here shows up in the browser tab
-            - Link to the favicon (small image that appears in the browser tab)
-            - Link to the CSS file (used to style the webpage)
-
-            When To Modify:
-            - [ ] Project 2 (REQUIRED FEATURE) 
-            - [ ] Project 2 (STRETCH FEATURE) (favicon)
-            - [ ] Any time after
-            -->
+            <!-- head -->
             <title>Dashboard</title>
-            <link rel = "stylesheet" href = "styles.css" /> <!--Our styling elements stored here-->
+            <link rel = "stylesheet" href = "styles.css" /> <!-- Our styling elements stored here-->
             <link rel = "icon" href = ""> <!--sheCodes logo here?-->
             <script src = "index.js" defer></script> <!--Our logic functions stored here-->
         </head>
         <body>
-            <div>
-                <!-- navigation bar to switch between Dashboard and Why Permissions screens-->
-                <div class="navbar">
-                <ul>
-                <li><a href="./dashboard.html">Dashboard</a></li>
-                <li><a href="./whypermissions.html">Why Permissions</a></li>
-                </ul>
+            <div class = "dashboard-layout">
+                <!--Dashboard page header-->
+                <div class = "header dashboard-header">
+                    <div class = "fixed-header">
+                        <img src = ".\assets\sheCodes26Icon.png" alt="sheCodes logo">
+                        <h2>sheCodes</h2>
+                        <h1>Dashboard</h1>
+                    </div>
+                    <!-- Navigation bar to switch between Dashboard and Why Permissions screens-->
+                    <div class="navbar">
+                        <ul>
+                            <li><a href="./dashboard.html" class = "active">Dashboard</a></li>
+                            <li><a href="./whypermissions.html">Why Permissions</a></li>
+                        </ul>
+                    </div>
+                   <h3>Welcome!</h3>
+                    <p>Select an app to review its permission use.</p>
                 </div>
-                <h1>Dashboard</h1>
-                <!--enter chatgpt dashboard page-->
-                <button id="chatgpt-btn">ChatGPT</button>
-                <div id="chatgpt-info" hidden>
-                    <h2>ChatGPT</h2>
-                    <button id="open-app-btn">Open Application</button>
-                    
-                    <!--permission use list-->
-                    <h3>ChatGPT Permission Use</h3>
-                    <ul>
-                        <li>Always Ask: <span id="always-ask-count">0</span> times</li>
-                        <li>Allow Read Actions: <span id="read-actions-count">0</span> times</li>
-                        <li>Allow Low-Risk Actions: <span id="low-risk-actions-count">0</span> times</li>
-                        <li>Allow All Actions: <span id="allow-all-actions-count">0</span> times</li>
-                    </ul>
+                <div class="dashboard-content">
+                    <!--container for all apps-->
+                    <div class = "apps-container">
+                        <img src = ".\assets\chatGPT.png" alt="ChatGPT" data-app="chatgpt" role="button" tabindex="0">
+                        <img src = ".\assets\tiktok.png" alt="TikTok" data-app="tiktok" role="button" tabindex="0">
+                        <img src = ".\assets\instagram.png" alt="Instagram" data-app="instagram" role="button" tabindex="0">
+                        <img src = ".\assets\temu.png" alt="Temu" data-app="temu" role="button" tabindex="0">
+                        <img src = ".\assets\whatsapp.png" alt="WhatsApp" data-app="whatsapp" role="button" tabindex="0">
+                        <img src = ".\assets\facebook.png" alt="Facebook" data-app="facebook" role="button" tabindex="0">
+                    </div>
+                    <div class = "desc-container">
+                        <img id="description-image" alt="" hidden>
+                        <h1 id="description-title">Who's Watching? Understanding App Permissions &amp; Phone Privacy</h1>
+                        <p id="description-text">This demo shows how everyday apps can access sensitive phone permissions 
+                            such as location, microphone, camera, contacts, and device sensors. Visitors 
+                            will use a stimulated privacy board that displays which apps accessed certain 
+                            permissions, when the access occurred, and whether that access makes sense 
+                            based on app’s purpose. Through this interactive experience, visitors will learn 
+                            how to recognize unnecessary permission access, make more informed privacy decisions, 
+                            and better understand what information their apps may be accessing in the background.</p>
+                        <!-- Revealed after an app is selected to open its details. -->
+                        <button id="review-permissions-btn" type="button" hidden>Review Permissions</button>
+                    </div>
                 </div>
+                
+                <!-- Native dialog populated with the selected app's details. -->
+                <dialog id="app-modal" aria-labelledby="modal-title">
+                    <div class="modal-content">
+                        <img id="modal-image" alt="">
+                        <h2 id="modal-title"></h2>
+                        <p id="modal-description"></p>
+                    </div>
+                    <form class="modal-actions" method="dialog">
+                        <button type="submit" value="allow">Allow</button>
+                        <button type="submit" value="deny">Don't Allow</button>
+                    </form>
+                </dialog>
 
+                <!--chatgpt permission sequence (opened by Review Permissions when ChatGPT is selected)-->
                 <!--always ask popup-->
-                <dialog id="always-ask-popup">
-                    <p>ChatGPT would like to access the following: Always Ask</p>
-                    <button id="always-ask-allow-btn">Always Ask</button>
-                    <button id="always-ask-dont-allow-btn">Don't Ask</button>
+                <dialog id="always-ask-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
+                        <h2>ChatGPT would like to access the following: Always Ask</h2>
+                        <p>ChatGPT asks before reading app information or making changes.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="always-ask-allow-btn">Always Ask</button>
+                        <button id="always-ask-dont-allow-btn">Don't Ask</button>
+                    </div>
                 </dialog>
                 <!--allow read actions popup-->
-                <dialog id="read-actions-popup">
-                    <p>ChatGPT would like to access the following: Allow Read Actions</p>
-                    <button id="read-actions-allow-btn">Allow</button>
-                    <button id="read-actions-dont-allow-btn">Don't Allow</button>
+                <dialog id="read-actions-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
+                        <h2>ChatGPT would like to access the following: Allow Read Actions</h2>
+                        <p>ChatGPT reads without asking but asks before making changes.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="read-actions-allow-btn">Allow</button>
+                        <button id="read-actions-dont-allow-btn">Don't Allow</button>
+                    </div>
                 </dialog>
                 <!--allow low-risk actions popup-->
-                <dialog id="low-risk-actions-popup">
-                    <p>ChatGPT would like to access the following: Allow Low-Risk Actions</p>
-                    <button id="low-risk-actions-allow-btn">Allow</button>
-                    <button id="low-risk-actions-dont-allow-btn">Don't Allow</button>
+                <dialog id="low-risk-actions-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
+                        <h2>ChatGPT would like to access the following: Allow Low-Risk Actions</h2>
+                        <p>ChatGPT automatically approves low-risk actions. Higher-risk actions may need confirmation.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="low-risk-actions-allow-btn">Allow</button>
+                        <button id="low-risk-actions-dont-allow-btn">Don't Allow</button>
+                    </div>
                 </dialog>
                 <!--allow all actions popup-->
-                <dialog id="allow-all-actions-popup">
-                    <p>ChatGPT would like to access the following: Allow All Actions</p>
-                    <button id="allow-all-actions-allow-btn">Allow</button>
-                    <button id="allow-all-actions-dont-allow-btn">Don't Allow</button>
+                <dialog id="allow-all-actions-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <img src="./assets/chatGPT.png" alt="ChatGPT app icon">
+                        <h2>ChatGPT would like to access the following: Allow All Actions</h2>
+                        <p>ChatGPT can perform supported actions without additional approval prompts.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="allow-all-actions-allow-btn">Allow</button>
+                        <button id="allow-all-actions-dont-allow-btn">Don't Allow</button>
+                    </div>
                 </dialog>
                 <!--explanation screen (reused after every popup, JavaScript fills in the words)-->
-                <dialog id="explain-popup">
-                    <h3 id="explain-title"></h3>
-                    <p id="explain-verdict"></p>
-                    <p id="explain-text"></p>
-                    <button id="explain-next-btn">Next</button>
+                <dialog id="explain-popup" class="permission-popup">
+                    <div class="modal-content">
+                        <h2 id="explain-title"></h2>
+                        <p id="explain-verdict"></p>
+                        <p id="explain-text"></p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="explain-next-btn">Next</button>
+                    </div>
                 </dialog>
+
             </div>
         </body>
     </html>
