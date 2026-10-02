@@ -1,20 +1,9 @@
 <!DOCTYPE html>
     <html lang="en">
         <head>
-            <!-- head
-
-            Purpose:
-            - Title used here shows up in the browser tab
-            - Link to the favicon (small image that appears in the browser tab)
-            - Link to the CSS file (used to style the webpage)
-
-            When To Modify:
-            - [ ] Project 2 (REQUIRED FEATURE) 
-            - [ ] Project 2 (STRETCH FEATURE) (favicon)
-            - [ ] Any time after
-            -->
+            <!-- head -->
             <title>Dashboard</title>
-            <link rel = "stylesheet" href = "styles.css" /> <!--Our styling elements stored here-->
+            <link rel = "stylesheet" href = "styles.css" /> <!-- Our styling elements stored here-->
             <link rel = "icon" href = ""> <!--sheCodes logo here?-->
             <script src = "index.js" defer></script> <!--Our logic functions stored here-->
         </head>
@@ -57,6 +46,8 @@
                             based on app’s purpose. Through this interactive experience, visitors will learn 
                             how to recognize unnecessary permission access, make more informed privacy decisions, 
                             and better understand what information their apps may be accessing in the background.</p>
+                        <!-- Revealed after an app is selected to open its details. -->
+                        <button id="review-permissions-btn" type="button" hidden>Review permissions</button>
                     </div>
                 </div>
                 
@@ -68,11 +59,17 @@
                     <h2>ChatGPT</h2>
                     <button id="open-app-btn">Open Application</button>
                 </div>
-                <!--Always Ask popup-->
-                <dialog id="popup">
-                    <p>ChatGPT would like to access the following: Always Ask</p>
-                    <button id="allow-btn">Allow</button>
-                    <button id="dont-allow-btn">Don't Allow</button>
+                <!-- Native dialog populated with the selected app's details. -->
+                <dialog id="app-modal" aria-labelledby="modal-title">
+                    <div class="modal-content">
+                        <img id="modal-image" alt="">
+                        <h2 id="modal-title"></h2>
+                        <p id="modal-description"></p>
+                    </div>
+                    <form class="modal-actions" method="dialog">
+                        <button type="submit" value="allow">Allow</button>
+                        <button type="submit" value="deny">Don't Allow</button>
+                    </form>
                 </dialog>
 
             </div>

@@ -14,6 +14,15 @@ body {
     flex-direction: column;
 }
 
+.dashboard-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    padding: 0 24px;
+}
+
 /* navbar src = https://www.w3schools.com/howto/howto_css_vertical_menu.asp */
 .navbar {
     width: 200px;
@@ -24,17 +33,8 @@ body {
     list-style: none;
 }
 
-.dashboard-content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 24px;
-    width: 100%;
-    padding: 0 24px;
-}
-
 .navbar a {
-    background: #FFEFF7;
+    background: #dd2782;
     font-size: 20px;
     color: black;
     display: block;
@@ -145,6 +145,79 @@ body {
 
 .desc-container img[hidden] {
     display: none;
+}
+
+/* Style the app review controls and responsive modal */
+#review-permissions-btn {
+    margin-top: 20px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 6px;
+    background: #dd2782;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+#review-permissions-btn:hover {
+    background: #b91f6d;
+}
+
+#app-modal {
+    width: min(90vw, 480px);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 24px;
+    background: white;
+    color: black;
+    overflow: hidden;
+}
+
+.modal-content {
+    padding: 28px 36px 32px;
+    text-align: center;
+}
+
+#modal-image {
+    display: block;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 16px;
+    object-fit: contain;
+}
+
+#app-modal p {
+    margin-top: 12px;
+}
+
+#app-modal::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #aaa;
+}
+
+.modal-actions button {
+    min-height: 64px;
+    padding: 12px;
+    border: 0;
+    background: transparent;
+    color: black;
+    font: inherit;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-actions button + button {
+    border-left: 1px solid #aaa;
+}
+
+.modal-actions button:hover {
+    background: #f3f3f3;
 }
 
 @media (max-width: 700px) {
