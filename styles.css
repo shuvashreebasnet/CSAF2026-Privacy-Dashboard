@@ -270,7 +270,7 @@ p {
 .why-permissions-content {
     width: min(100% - 200px, 1060px);
     margin: 0 0 0 200px;
-    padding: 24px 32px 40px;
+    padding: 24px 32px 112px;
 }
 
 .permission-heading {
@@ -328,13 +328,20 @@ p {
 
 /* Style the 20px, 25px, and 30px description-size choices. */
 .description-size-picker {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 20;
     display: flex;
     align-items: center;
     gap: 4px;
     min-height: 42px;
+    max-width: calc(100vw - 24px);
     padding: 4px;
     border: 1px solid #dd2782;
     border-radius: 6px;
+    background: #FFEFF7;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .description-size-picker legend {
@@ -443,7 +450,7 @@ p {
     .why-permissions-content {
         width: 100%;
         margin: 0;
-        padding: 24px 16px;
+        padding: 24px 16px 112px;
     }
 
     .permission-option {
