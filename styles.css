@@ -1,3 +1,7 @@
+:root {
+    --font-family: "Lexend", sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +11,7 @@
 body {
     background: #FFEFF7;
     overflow-x: hidden;
+    font-family: var(--font-family);
 }
 
 p {
@@ -148,6 +153,13 @@ p {
     width: 100%;
     height: auto;
     transition: filter 150ms ease, transform 150ms ease;
+    cursor: pointer;
+}
+
+.apps-container img:focus-visible {
+    outline: 3px solid #7d1748;
+    outline-offset: 3px;
+    border-radius: 8px;
 }
 
 .apps-container img:hover {
@@ -415,9 +427,43 @@ p {
 }
 
 @media (max-width: 700px) {
+    .fixed-header {
+        gap: 8px;
+        height: 60px;
+        padding: 8px 12px;
+    }
+
+    .fixed-header img {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+    .fixed-header h1,
+    .fixed-header h2 {
+        font-size: clamp(15px, 4.5vw, 20px);
+    }
+
+    .dashboard-layout > .header {
+        padding: 76px 16px 20px;
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .dashboard-layout > .header h3 {
+        font-size: clamp(24px, 7vw, 32px);
+    }
+
+    .dashboard-layout > .header p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
     .dashboard-content {
         flex-direction: column;
         align-items: center;
+        gap: 16px;
+        padding: 0 16px;
     }
 
     .dashboard-layout > .header .navbar,
@@ -429,18 +475,61 @@ p {
     }
 
     .dashboard-layout > .header .navbar {
-        width: calc(100% + 60px);
-        margin-left: -30px;
+        width: calc(100% + 32px);
+        margin: 20px -16px 0;
     }
 
-    .dashboard-layout > .header {
-        padding-left: 30px;
-        text-align: center;
+    .dashboard-layout > .header .navbar ul {
+        display: flex;
+    }
+
+    .dashboard-layout > .header .navbar li {
+        flex: 1;
+    }
+
+    .dashboard-layout > .header .navbar a {
+        display: flex;
+        min-height: 52px;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 8px;
+        font-size: 16px;
     }
 
     .dashboard-layout > .dashboard-content {
         width: 100%;
         margin-left: 0;
+    }
+
+    .apps-container {
+        flex: none;
+        width: 100%;
+        max-width: 420px;
+        min-height: 0;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .apps-container img {
+        padding: 4px;
+    }
+
+    .desc-container {
+        flex: none;
+        width: 100%;
+        max-width: 640px;
+        min-height: 0;
+        padding: 20px;
+    }
+
+    .desc-container h1 {
+        font-size: clamp(22px, 6vw, 28px);
+        line-height: 1.2;
+    }
+
+    .desc-container p {
+        font-size: 16px;
+        line-height: 1.5;
     }
 
     .navbar {
