@@ -121,6 +121,147 @@
                         <button id="allow-all-actions-dont-allow-btn">Don't Allow</button>
                     </div>
                 </dialog>
+
+                <!--tiktok permission sequence (opened by Review Permissions when TikTok is selected)-->
+                <!--face and voice popup-->
+                <dialog id="tiktok-face-voice-popup" class="permission-popup">
+                    <span class="permission-step">Permission 1 of 3</span>
+                    <div class="modal-content">
+                        <img src="./assets/tiktok.png" alt="TikTok app icon">
+                        <h2>TikTok would like to access the following: Face and Voice</h2>
+                        <p>TikTok collects and analyzes face and voice information in your videos, photos, and LIVE videos.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="tiktok-face-voice-allow-btn">Allow</button>
+                        <button id="tiktok-face-voice-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+                <!--location popup-->
+                <dialog id="tiktok-location-popup" class="permission-popup">
+                    <span class="permission-step">Permission 2 of 3</span>
+                    <div class="modal-content">
+                        <img src="./assets/tiktok.png" alt="TikTok app icon">
+                        <h2>TikTok would like to access the following: Location</h2>
+                        <p>TikTok uses your device's Location Services to recommend content, location tags, and ads.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="tiktok-location-allow-btn">Allow</button>
+                        <button id="tiktok-location-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+                <!--third-party apps popup-->
+                <dialog id="tiktok-third-party-popup" class="permission-popup">
+                    <span class="permission-step">Permission 3 of 3</span>
+                    <div class="modal-content">
+                        <img src="./assets/tiktok.png" alt="TikTok app icon">
+                        <h2>TikTok would like to access the following: Third-Party Apps</h2>
+                        <p>Apps you log in to with TikTok may get your profile picture, profile name, and public content.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="tiktok-third-party-allow-btn">Allow</button>
+                        <button id="tiktok-third-party-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+
+                <!--instagram permission sequence (opened by Review Permissions when Instagram is selected)-->
+                <!--collected activity popup-->
+                <dialog id="instagram-activity-popup" class="permission-popup">
+                    <span class="permission-step">Permission 1 of 2</span>
+                    <div class="modal-content">
+                        <img src="./assets/instagram.png" alt="Instagram app icon">
+                        <h2>Instagram would like to access the following: Collected Activity and Information</h2>
+                        <p>Instagram collects your posts, comments, audio, and content from your camera and camera roll.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="instagram-activity-allow-btn">Allow</button>
+                        <button id="instagram-activity-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+                <!--share contact info with advertisers popup-->
+                <dialog id="instagram-advertisers-popup" class="permission-popup">
+                    <span class="permission-step">Permission 2 of 2</span>
+                    <div class="modal-content">
+                        <img src="./assets/instagram.png" alt="Instagram app icon">
+                        <h2>Instagram would like to access the following: Share Contact Info with Advertisers</h2>
+                        <p>Advertisers only receive information that identifies you if you give permission.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="instagram-advertisers-allow-btn">Allow</button>
+                        <button id="instagram-advertisers-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+
+                <!--temu permission sequence (opened by Review Permissions when Temu is selected)-->
+                <!--personal information and device data popup-->
+                <dialog id="temu-personal-info-popup" class="permission-popup">
+                    <span class="permission-step">Permission 1 of 2</span>
+                    <div class="modal-content">
+                        <img src="./assets/temu.png" alt="Temu app icon">
+                        <h2>Temu would like to access the following: Personal Information and Device Data</h2>
+                        <p>Temu collects information about you and your device, and receives information from its advertising partners.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="temu-personal-info-allow-btn">Allow</button>
+                        <button id="temu-personal-info-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+                <!--sign in with facebook or google popup-->
+                <dialog id="temu-sign-in-popup" class="permission-popup">
+                    <span class="permission-step">Permission 2 of 2</span>
+                    <div class="modal-content">
+                        <img src="./assets/temu.png" alt="Temu app icon">
+                        <h2>Temu would like to access the following: Sign In with Facebook or Google</h2>
+                        <p>Signing in with Facebook or Google shares your profile photo, user name, and email with Temu.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="temu-sign-in-allow-btn">Allow</button>
+                        <button id="temu-sign-in-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+
+                <!--whatsapp permission sequence (opened by Review Permissions when WhatsApp is selected)-->
+                <!--photo and video popup-->
+                <dialog id="whatsapp-photos-popup" class="permission-popup">
+                    <span class="permission-step">Permission 1 of 1</span>
+                    <div class="modal-content">
+                        <img src="./assets/whatsapp.png" alt="WhatsApp app icon">
+                        <h2>WhatsApp would like to access the following: Photo and Video</h2>
+                        <p>WhatsApp would like to access your camera roll to share photos and videos.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="whatsapp-photos-allow-btn">Allow</button>
+                        <button id="whatsapp-photos-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+
+                <!--facebook permission sequence (opened by Review Permissions when Facebook is selected)-->
+                <!--collected activity popup-->
+                <dialog id="facebook-activity-popup" class="permission-popup">
+                    <span class="permission-step">Permission 1 of 2</span>
+                    <div class="modal-content">
+                        <img src="./assets/facebook.png" alt="Facebook app icon">
+                        <h2>Facebook would like to access the following: Collected Activity and Information</h2>
+                        <p>Facebook collects your posts, comments, audio, and content from your camera and camera roll.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="facebook-activity-allow-btn">Allow</button>
+                        <button id="facebook-activity-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+                <!--share contact info with advertisers popup-->
+                <dialog id="facebook-advertisers-popup" class="permission-popup">
+                    <span class="permission-step">Permission 2 of 2</span>
+                    <div class="modal-content">
+                        <img src="./assets/facebook.png" alt="Facebook app icon">
+                        <h2>Facebook would like to access the following: Share Contact Info with Advertisers</h2>
+                        <p>Advertisers only receive information that identifies you if you give permission.</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="facebook-advertisers-allow-btn">Allow</button>
+                        <button id="facebook-advertisers-dont-allow-btn">Don't Allow</button>
+                    </div>
+                </dialog>
+
                 <!--explanation screen (reused after every popup, JavaScript fills in the words)-->
                 <dialog id="explain-popup" class="permission-popup">
                     <div class="modal-content">
