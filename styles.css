@@ -618,3 +618,29 @@ p {
     color: #dd2782;
     font-weight: bold;
 }
+
+/* recommended / optional tag, next to the permission name */
+.permission-copy h3 .permission-label {
+    margin: 0 0 0 8px;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+/* allowed / not allowed tag, next to the recommended / optional tag */
+.choice-label {
+    display: inline-block;
+    margin-top: 7px;
+    margin-left: 6px;
+    padding: 3px 12px;
+    border: 1px solid #c9c9c9;
+    border-radius: 999px;
+    background: #ececec;
+    color: #444;
+    font-size: 12px;
+}
+
+.choice-allowed {
+    border-color: #f0a6cb;
+    background: #ffe3f1;
+    color: #8a1550;
+}
