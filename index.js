@@ -86,23 +86,23 @@ if (alwaysaskpopup) {
     //what each chatgpt explanation screen says (based on the research doc)
     const alwaysaskexplain = {
         title: "Always Ask",
-        verdict: "Recommended",
-        text: "ChatGPT asks before reading app information or making changes. You stay in control of everything it does."
+        verdict: "Does this make sense? Yes",
+        text: "ChatGPT asks before reading app information or making changes. Many people use ChatGPT as an assistant for things like writing emails or editing files, and this keeps you in control of every action."
     };
     const readactionsexplain = {
         title: "Allow Read Actions",
-        verdict: "Optional",
-        text: "ChatGPT reads your information without asking, but still asks before making changes."
+        verdict: "Does this make sense? Yes",
+        text: "An assistant needs to read your information to help with it. ChatGPT reads without asking, but still asks before making changes, so it can't edit anything without you."
     };
     const lowriskexplain = {
         title: "Allow Low-Risk Actions",
-        verdict: "Optional",
-        text: "ChatGPT automatically approves low-risk actions. Higher-risk actions may need your confirmation or be denied."
+        verdict: "Does this make sense? Yes",
+        text: "ChatGPT automatically approves actions it considers low risk, while higher-risk actions may still need your confirmation. People might not realize what they've allowed, so it's worth knowing this setting is on."
     };
     const allowallexplain = {
         title: "Allow All Actions",
-        verdict: "Optional",
-        text: "ChatGPT can take supported actions without asking for approval. This carries elevated risk, which is why standard account and workspace settings don't offer it."
+        verdict: "Does this make sense? Yes",
+        text: "ChatGPT can take supported actions without asking for approval, which carries elevated risk. Standard account and workspace settings don't even offer this option, and ChatGPT starts users with \"Ask with approval\" instead."
     };
 
     //what each tiktok explanation screen says (based on the research doc)
@@ -571,11 +571,24 @@ function renderPermissionOptions(appKey) {
 		const description = document.createElement("p");
 		description.textContent = permission.description;
 
+		//recommended / optional tag
 		const label = document.createElement("span");
 		label.classList.add("permission-label");
 		label.textContent = permission.label;
 
 		copy.append(title, description, label);
+
+		//show whether the visitor allowed this permission on the dashboard (next to the recommended / optional tag)
+		const choice = sessionStorage.getItem(app.name + ": " + permission.permission);
+		if (choice) {
+			const choicelabel = document.createElement("span");
+			choicelabel.classList.add("choice-label");
+			if (choice === "Allowed") {
+				choicelabel.classList.add("choice-allowed");
+			}
+			choicelabel.textContent = choice;
+			copy.append(choicelabel);
+		}
 		card.append(mark, copy);
 		permissionOptions.append(card);
 	});
@@ -625,3 +638,19 @@ if (reviewPermissionsButton && appModal) {
 		}
 	});
 }
+
+//remember what the visitor chose in each permission popup
+//(sessionStorage keeps it while the tab is open, so the Why Permissions page can read it)
+document.querySelectorAll("dialog.permission-popup:not(#explain-popup)").forEach((popup) => {
+    //popup titles look like "TikTok would like to access the following: Location"
+    const [appname, permissionname] = popup.querySelector("h2").textContent.split(" would like to access the following: ");
+    const buttons = popup.querySelectorAll(".modal-actions button");
+
+    //the first button allows, the second button doesn't
+    buttons[0].addEventListener("click", () => {
+        sessionStorage.setItem(appname + ": " + permissionname, "Allowed");
+    });
+    buttons[1].addEventListener("click", () => {
+        sessionStorage.setItem(appname + ": " + permissionname, "Not Allowed");
+    });
+});
