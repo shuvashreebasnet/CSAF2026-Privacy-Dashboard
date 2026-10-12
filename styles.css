@@ -23,6 +23,11 @@ p {
     flex-direction: column;
 }
 
+/* keeps dashboard paragraph content text in sync with the selected text size. */
+.dashboard-layout :is(p, a, button, span) {
+    font-size: var(--permission-description-size, 20px);
+}
+
 .dashboard-content {
     display: flex;
     align-items: flex-start;
@@ -209,6 +214,7 @@ p {
     background: #dd2782;
     color: white;
     font: inherit;
+    font-size: var(--permission-description-size, 20px);
     cursor: pointer;
 }
 
@@ -325,7 +331,7 @@ p {
 }
 
 .permission-app-picker label {
-    font-size: 14px;
+    font-size: var(--permission-description-size, 20px);
 }
 
 .permission-app-picker select {
@@ -337,6 +343,11 @@ p {
     background: white;
     color: black;
     font: inherit;
+    font-size: var(--permission-description-size, 20px);
+}
+
+.permission-app-picker option {
+    font-size: var(--permission-description-size, 20px);
 }
 
 /* Style the 20px, 25px, and 30px description-size choices. */
@@ -407,7 +418,7 @@ p {
 
 .permission-copy h3 {
     margin: 2px 0 5px;
-    font-size: 16px;
+    font-size: var(--permission-description-size, 20px);
 }
 
 /* Use the size selected for the permission descriptions. */
@@ -423,7 +434,7 @@ p {
     border-radius: 999px;
     background: #dd2782;
     color: white;
-    font-size: 12px;
+    font-size: var(--permission-description-size, 20px);
 }
 
 @media (max-width: 700px) {
@@ -613,6 +624,11 @@ p {
     grid-template-columns: 1fr;
 }
 
+#explain-title,
+#explain-verdict {
+    font-size: var(--permission-description-size, 20px);
+}
+
 /* "Recommended" / "Optional" in sheCodes pink */
 #explain-verdict {
     color: #dd2782;
@@ -636,7 +652,7 @@ p {
     border-radius: 999px;
     background: #ececec;
     color: #444;
-    font-size: 12px;
+    font-size: var(--permission-description-size, 20px);
 }
 
 .choice-allowed {

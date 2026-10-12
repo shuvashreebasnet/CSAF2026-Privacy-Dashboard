@@ -43,9 +43,9 @@
                         <img id="description-image" alt="" hidden>
                         <h1 id="description-title">Who's Watching? Understanding App Permissions &amp; Phone Privacy</h1>
                         <p id="description-text">This demo shows how everyday apps can access sensitive phone permissions 
-                            such as location, microphone, camera, contacts, and device sensors. Visitors 
+                            such as location, microphone, and camera. Visitors 
                             will use a stimulated privacy board that displays which apps accessed certain 
-                            permissions, when the access occurred, and whether that access makes sense 
+                            permissions and whether that access makes sense 
                             based on app’s purpose. Through this interactive experience, visitors will learn 
                             how to recognize unnecessary permission access, make more informed privacy decisions, 
                             and better understand what information their apps may be accessing in the background.</p>
@@ -340,5 +340,12 @@
                 </dialog>
 
             </div>
+            <!-- to choose the permission-description font size. -->
+            <fieldset class="description-size-picker">
+                <legend>Text Size</legend>
+                <label><input type="radio" name="description-size" value="20" checked>20px</label>
+                <label><input type="radio" name="description-size" value="25">25px</label>
+                <label><input type="radio" name="description-size" value="30">30px</label>
+            </fieldset>
         </body>
     </html>

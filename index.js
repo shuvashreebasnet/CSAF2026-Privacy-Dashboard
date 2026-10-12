@@ -629,7 +629,6 @@ const permissionAppSelect = document.querySelector("#permission-app-select");
 const selectedAppName = document.querySelector("#selected-app-name");
 const permissionOptions = document.querySelector("#permission-options");
 const descriptionSizeInputs = document.querySelectorAll('input[name="description-size"]');
-const whyPermissionsPage = document.querySelector(".why-permissions-page");
 
 function showAppDescription(image) {
     const app = appDescriptions[image.dataset.app];
@@ -728,18 +727,18 @@ if (permissionAppSelect) {
 	renderPermissionOptions(permissionAppSelect.value);
 }
 
-// Apply the selected size to every permission description and set the default.
+// Apply the selected size to permission descriptions and the explanation title/verdict.
 descriptionSizeInputs.forEach((input) => {
 	input.addEventListener("change", () => {
-		if (input.checked && whyPermissionsPage) {
-			whyPermissionsPage.style.setProperty("--permission-description-size", `${input.value}px`);
+		if (input.checked && document.body) {
+			document.body.style.setProperty("--permission-description-size", `${input.value}px`);
 		}
 	});
 });
 
 const initialDescriptionSize = document.querySelector('input[name="description-size"]:checked');
-if (initialDescriptionSize && whyPermissionsPage) {
-	whyPermissionsPage.style.setProperty("--permission-description-size", `${initialDescriptionSize.value}px`);
+if (initialDescriptionSize && document.body) {
+	document.body.style.setProperty("--permission-description-size", `${initialDescriptionSize.value}px`);
 }
 
 // Bind the popup control only on pages that include the dashboard modal.
