@@ -1,10 +1,10 @@
 //the first popup for each app (only exists on the dashboard page)
 const alwaysaskpopup = document.getElementById('always-ask-popup');
 const tiktokfacevoicepopup = document.getElementById('tiktok-face-voice-popup');
-const instagramactivitypopup = document.getElementById('instagram-activity-popup');
+const instagramcamerapopup = document.getElementById('instagram-camera-popup');
 const temupersonalinfopopup = document.getElementById('temu-personal-info-popup');
 const whatsappphotospopup = document.getElementById('whatsapp-photos-popup');
-const facebookactivitypopup = document.getElementById('facebook-activity-popup');
+const facebookcamerapopup = document.getElementById('facebook-camera-popup');
 
 //only run this on the page that has the permission popups
 if (alwaysaskpopup) {
@@ -24,23 +24,32 @@ if (alwaysaskpopup) {
     const allowalldontallowbtn = document.getElementById('allow-all-actions-dont-allow-btn');
 
     //the other tiktok popups
+    const tiktokageestimationpopup = document.getElementById('tiktok-age-estimation-popup');
     const tiktoklocationpopup = document.getElementById('tiktok-location-popup');
     const tiktokthirdpartypopup = document.getElementById('tiktok-third-party-popup');
 
     //tiktok popup buttons
     const tiktokfacevoiceallowbtn = document.getElementById('tiktok-face-voice-allow-btn');
     const tiktokfacevoicedontallowbtn = document.getElementById('tiktok-face-voice-dont-allow-btn');
+    const tiktokageestimationallowbtn = document.getElementById('tiktok-age-estimation-allow-btn');
+    const tiktokageestimationdontallowbtn = document.getElementById('tiktok-age-estimation-dont-allow-btn');
     const tiktoklocationallowbtn = document.getElementById('tiktok-location-allow-btn');
     const tiktoklocationdontallowbtn = document.getElementById('tiktok-location-dont-allow-btn');
     const tiktokthirdpartyallowbtn = document.getElementById('tiktok-third-party-allow-btn');
     const tiktokthirdpartydontallowbtn = document.getElementById('tiktok-third-party-dont-allow-btn');
 
-    //the other instagram popup
+    //the other instagram popups
+    const instagrammicrophonepopup = document.getElementById('instagram-microphone-popup');
+    const instagramactivitystatuspopup = document.getElementById('instagram-activity-status-popup');
     const instagramadvertiserspopup = document.getElementById('instagram-advertisers-popup');
 
     //instagram popup buttons
-    const instagramactivityallowbtn = document.getElementById('instagram-activity-allow-btn');
-    const instagramactivitydontallowbtn = document.getElementById('instagram-activity-dont-allow-btn');
+    const instagramcameraallowbtn = document.getElementById('instagram-camera-allow-btn');
+    const instagramcameradontallowbtn = document.getElementById('instagram-camera-dont-allow-btn');
+    const instagrammicrophoneallowbtn = document.getElementById('instagram-microphone-allow-btn');
+    const instagrammicrophonedontallowbtn = document.getElementById('instagram-microphone-dont-allow-btn');
+    const instagramactivitystatusallowbtn = document.getElementById('instagram-activity-status-allow-btn');
+    const instagramactivitystatusdontallowbtn = document.getElementById('instagram-activity-status-dont-allow-btn');
     const instagramadvertisersallowbtn = document.getElementById('instagram-advertisers-allow-btn');
     const instagramadvertisersdontallowbtn = document.getElementById('instagram-advertisers-dont-allow-btn');
 
@@ -57,12 +66,18 @@ if (alwaysaskpopup) {
     const whatsappphotosallowbtn = document.getElementById('whatsapp-photos-allow-btn');
     const whatsappphotosdontallowbtn = document.getElementById('whatsapp-photos-dont-allow-btn');
 
-    //the other facebook popup
+    //the other facebook popups
+    const facebookmicrophonepopup = document.getElementById('facebook-microphone-popup');
+    const facebookactivitystatuspopup = document.getElementById('facebook-activity-status-popup');
     const facebookadvertiserspopup = document.getElementById('facebook-advertisers-popup');
 
     //facebook popup buttons
-    const facebookactivityallowbtn = document.getElementById('facebook-activity-allow-btn');
-    const facebookactivitydontallowbtn = document.getElementById('facebook-activity-dont-allow-btn');
+    const facebookcameraallowbtn = document.getElementById('facebook-camera-allow-btn');
+    const facebookcameradontallowbtn = document.getElementById('facebook-camera-dont-allow-btn');
+    const facebookmicrophoneallowbtn = document.getElementById('facebook-microphone-allow-btn');
+    const facebookmicrophonedontallowbtn = document.getElementById('facebook-microphone-dont-allow-btn');
+    const facebookactivitystatusallowbtn = document.getElementById('facebook-activity-status-allow-btn');
+    const facebookactivitystatusdontallowbtn = document.getElementById('facebook-activity-status-dont-allow-btn');
     const facebookadvertisersallowbtn = document.getElementById('facebook-advertisers-allow-btn');
     const facebookadvertisersdontallowbtn = document.getElementById('facebook-advertisers-dont-allow-btn');
 
@@ -73,96 +88,126 @@ if (alwaysaskpopup) {
     let lowrisknum = 0;
     let allowallnum = 0;
     let tiktokfacevoicenum = 0;
+    let tiktokageestimationnum = 0;
     let tiktoklocationnum = 0;
     let tiktokthirdpartynum = 0;
-    let instagramactivitynum = 0;
+    let instagramcameranum = 0;
+    let instagrammicrophonenum = 0;
+    let instagramactivitystatusnum = 0;
     let instagramadvertisersnum = 0;
     let temupersonalinfonum = 0;
     let temusigninnum = 0;
     let whatsappphotosnum = 0;
-    let facebookactivitynum = 0;
+    let facebookcameranum = 0;
+    let facebookmicrophonenum = 0;
+    let facebookactivitystatusnum = 0;
     let facebookadvertisersnum = 0;
 
     //what each chatgpt explanation screen says (based on the research doc)
     const alwaysaskexplain = {
         title: "Always Ask",
-        verdict: "Does this make sense? Yes",
+        verdict: "Reasonable",
         text: "ChatGPT asks before reading app information or making changes. Many people use ChatGPT as an assistant for things like writing emails or editing files, and this keeps you in control of every action."
     };
     const readactionsexplain = {
         title: "Allow Read Actions",
-        verdict: "Does this make sense? Yes",
+        verdict: "Reasonable",
         text: "An assistant needs to read your information to help with it. ChatGPT reads without asking, but still asks before making changes, so it can't edit anything without you."
     };
     const lowriskexplain = {
         title: "Allow Low-Risk Actions",
-        verdict: "Does this make sense? Yes",
+        verdict: "Use Caution",
         text: "ChatGPT automatically approves actions it considers low risk, while higher-risk actions may still need your confirmation. People might not realize what they've allowed, so it's worth knowing this setting is on."
     };
     const allowallexplain = {
         title: "Allow All Actions",
-        verdict: "Does this make sense? Yes",
+        verdict: "Unnecessary",
         text: "ChatGPT can take supported actions without asking for approval, which carries elevated risk. Standard account and workspace settings don't even offer this option, and ChatGPT starts users with \"Ask with approval\" instead."
     };
 
     //what each tiktok explanation screen says (based on the research doc)
     const tiktokfacevoiceexplain = {
         title: "Face and Voice",
-        verdict: "Does this make sense? No",
-        text: "TikTok analyzes faces and voices to fit filters and create avatars, but also to recommend content. If you confirm your age with a selfie, it's sent to Yoti, a third-party company. That's a lot for a social media app."
+        verdict: "Reasonable",
+        text: "TikTok analyzes faces and voices in your content so filters fit your facial features and vocal pitch, and to create avatars. It's also used to improve safety and moderate content. These features need this information to work."
+    };
+    const tiktokageestimationexplain = {
+        title: "Facial Age Estimation",
+        verdict: "Unnecessary",
+        text: "To confirm your age with a selfie, TikTok sends your face information to Yoti, a third-party company. Sharing your face with an outside company goes beyond what a social media app needs."
     };
     const tiktoklocationexplain = {
         title: "Location",
-        verdict: "Does this make sense? No",
+        verdict: "Unnecessary",
         text: "Location helps TikTok suggest nearby content and location tags, but it's also used to recommend ads. It has to be turned on in both your device settings and TikTok's settings."
     };
     const tiktokthirdpartyexplain = {
         title: "Third-Party Apps",
-        verdict: "Does this make sense? No",
+        verdict: "Unnecessary",
         text: "Apps you log in to with TikTok can see your profile picture, name, and public content, plus an ID linked to your account. You can opt out of sharing some of this before connecting."
     };
 
     //what each instagram explanation screen says (based on the research doc)
-    const instagramactivityexplain = {
-        title: "Collected Activity and Information",
-        verdict: "Does this make sense? No",
-        text: "Instagram collects what you post, what you view, and what you do in its in-app browser. Social media is meant to keep people updated on your life, but this data is used to show you ads."
+    const instagramcameraexplain = {
+        title: "Camera and Camera Roll",
+        verdict: "Use Caution",
+        text: "Camera access lets you post and use masks, filters, and effects, but Instagram also collects the content you share through your camera and camera roll. Meta uses the information it collects to personalize your experience, including ads."
+    };
+    const instagrammicrophoneexplain = {
+        title: "Microphone (Voice Features)",
+        verdict: "Use Caution",
+        text: "Microphone access lets you record audio and use voice features, but Instagram also collects the audio and voice content you provide. Meta uses the information it collects to personalize your experience, including ads."
+    };
+    const instagramactivitystatusexplain = {
+        title: "Activity Status",
+        verdict: "Unnecessary",
+        text: "Activity status shows people when you're active on the app. It's turned on by default, so many people don't realize others can see when they're online. You can turn it off in settings."
     };
     const instagramadvertisersexplain = {
         title: "Share Contact Info with Advertisers",
-        verdict: "Does this make sense? No",
-        text: "Advertisers get reports on who saw and engaged with their ads. Information that identifies you is only shared if you give permission, like sending an advertiser a form."
+        verdict: "Unnecessary",
+        text: "Meta already sends advertisers reports on who saw and engaged with their ads. Sharing information that identifies you isn't needed to use Instagram."
     };
 
     //what each temu explanation screen says (based on the research doc)
     const temupersonalinfoexplain = {
         title: "Personal Information and Device Data",
-        verdict: "Does this make sense? Yes",
+        verdict: "Reasonable",
         text: "As a store, Temu needs your purchase and delivery details. But it also automatically collects your device model, operating system, and internet service, and gets information from advertising partners, which can feel invasive."
     };
     const temusigninexplain = {
         title: "Sign In with Facebook or Google",
-        verdict: "Does this make sense? Yes",
+        verdict: "Reasonable",
         text: "Signing in with another account is convenient, but it gives Temu your profile photo, user name, and email from that account."
     };
 
     //what the whatsapp explanation screen says (based on the research doc)
     const whatsappphotosexplain = {
         title: "Photo and Video",
-        verdict: "Does this make sense? Yes",
+        verdict: "Reasonable",
         text: "WhatsApp only asks for your camera roll when you want to share a photo or video. Your personal messages and calls are end-to-end encrypted, so they stay between the people in the conversation."
     };
 
     //what each facebook explanation screen says (same reasoning as instagram in the research doc)
-    const facebookactivityexplain = {
-        title: "Collected Activity and Information",
-        verdict: "Does this make sense? No",
-        text: "Facebook collects what you post, what you view, and what you do in its in-app browser. Social media is meant to keep people updated on your life, but this data is used to show you ads."
+    const facebookcameraexplain = {
+        title: "Camera and Camera Roll",
+        verdict: "Use Caution",
+        text: "Camera access lets you post and use masks, filters, and effects, but Facebook also collects the content you share through your camera and camera roll. Meta uses the information it collects to personalize your experience, including ads."
+    };
+    const facebookmicrophoneexplain = {
+        title: "Microphone (Voice Features)",
+        verdict: "Use Caution",
+        text: "Microphone access lets you record audio and use voice features, but Facebook also collects the audio and voice content you provide. Meta uses the information it collects to personalize your experience, including ads."
+    };
+    const facebookactivitystatusexplain = {
+        title: "Activity Status",
+        verdict: "Unnecessary",
+        text: "Activity status shows people when you're active on the app. It's turned on by default, so many people don't realize others can see when they're online. You can turn it off in settings."
     };
     const facebookadvertisersexplain = {
         title: "Share Contact Info with Advertisers",
-        verdict: "Does this make sense? No",
-        text: "Advertisers get reports on who saw and engaged with their ads. Information that identifies you is only shared if you give permission, like sending an advertiser a form."
+        verdict: "Unnecessary",
+        text: "Meta already sends advertisers reports on who saw and engaged with their ads. Sharing information that identifies you isn't needed to use Facebook."
     };
 
     //the explanation screen and its parts
@@ -242,14 +287,25 @@ if (alwaysaskpopup) {
     tiktokfacevoiceallowbtn.addEventListener("click", () => {
         tiktokfacevoicenum = tiktokfacevoicenum + 1;
         tiktokfacevoicepopup.close();
-        showExplanation(tiktokfacevoiceexplain, tiktoklocationpopup);
+        showExplanation(tiktokfacevoiceexplain, tiktokageestimationpopup);
     });
     tiktokfacevoicedontallowbtn.addEventListener("click", () => {
         tiktokfacevoicepopup.close();
-        showExplanation(tiktokfacevoiceexplain, tiktoklocationpopup);
+        showExplanation(tiktokfacevoiceexplain, tiktokageestimationpopup);
     });
 
-    //tiktok popup 2 (location) → explanation → popup 3
+    //tiktok popup 2 (facial age estimation) → explanation → popup 3
+    tiktokageestimationallowbtn.addEventListener("click", () => {
+        tiktokageestimationnum = tiktokageestimationnum + 1;
+        tiktokageestimationpopup.close();
+        showExplanation(tiktokageestimationexplain, tiktoklocationpopup);
+    });
+    tiktokageestimationdontallowbtn.addEventListener("click", () => {
+        tiktokageestimationpopup.close();
+        showExplanation(tiktokageestimationexplain, tiktoklocationpopup);
+    });
+
+    //tiktok popup 3 (location) → explanation → popup 4
     tiktoklocationallowbtn.addEventListener("click", () => {
         tiktoklocationnum = tiktoklocationnum + 1;
         tiktoklocationpopup.close();
@@ -260,7 +316,7 @@ if (alwaysaskpopup) {
         showExplanation(tiktoklocationexplain, tiktokthirdpartypopup);
     });
 
-    //tiktok popup 3 (third-party apps) → explanation → done
+    //tiktok popup 4 (third-party apps) → explanation → done
     tiktokthirdpartyallowbtn.addEventListener("click", () => {
         tiktokthirdpartynum = tiktokthirdpartynum + 1;
         tiktokthirdpartypopup.close();
@@ -271,18 +327,40 @@ if (alwaysaskpopup) {
         showExplanation(tiktokthirdpartyexplain, null);
     });
 
-    //instagram popup 1 (collected activity) → explanation → popup 2
-    instagramactivityallowbtn.addEventListener("click", () => {
-        instagramactivitynum = instagramactivitynum + 1;
-        instagramactivitypopup.close();
-        showExplanation(instagramactivityexplain, instagramadvertiserspopup);
+    //instagram popup 1 (camera and camera roll) → explanation → popup 2
+    instagramcameraallowbtn.addEventListener("click", () => {
+        instagramcameranum = instagramcameranum + 1;
+        instagramcamerapopup.close();
+        showExplanation(instagramcameraexplain, instagrammicrophonepopup);
     });
-    instagramactivitydontallowbtn.addEventListener("click", () => {
-        instagramactivitypopup.close();
-        showExplanation(instagramactivityexplain, instagramadvertiserspopup);
+    instagramcameradontallowbtn.addEventListener("click", () => {
+        instagramcamerapopup.close();
+        showExplanation(instagramcameraexplain, instagrammicrophonepopup);
     });
 
-    //instagram popup 2 (advertisers) → explanation → done
+    //instagram popup 2 (microphone) → explanation → popup 3
+    instagrammicrophoneallowbtn.addEventListener("click", () => {
+        instagrammicrophonenum = instagrammicrophonenum + 1;
+        instagrammicrophonepopup.close();
+        showExplanation(instagrammicrophoneexplain, instagramactivitystatuspopup);
+    });
+    instagrammicrophonedontallowbtn.addEventListener("click", () => {
+        instagrammicrophonepopup.close();
+        showExplanation(instagrammicrophoneexplain, instagramactivitystatuspopup);
+    });
+
+    //instagram popup 3 (activity status) → explanation → popup 4
+    instagramactivitystatusallowbtn.addEventListener("click", () => {
+        instagramactivitystatusnum = instagramactivitystatusnum + 1;
+        instagramactivitystatuspopup.close();
+        showExplanation(instagramactivitystatusexplain, instagramadvertiserspopup);
+    });
+    instagramactivitystatusdontallowbtn.addEventListener("click", () => {
+        instagramactivitystatuspopup.close();
+        showExplanation(instagramactivitystatusexplain, instagramadvertiserspopup);
+    });
+
+    //instagram popup 4 (advertisers) → explanation → done
     instagramadvertisersallowbtn.addEventListener("click", () => {
         instagramadvertisersnum = instagramadvertisersnum + 1;
         instagramadvertiserspopup.close();
@@ -326,18 +404,40 @@ if (alwaysaskpopup) {
         showExplanation(whatsappphotosexplain, null);
     });
 
-    //facebook popup 1 (collected activity) → explanation → popup 2
-    facebookactivityallowbtn.addEventListener("click", () => {
-        facebookactivitynum = facebookactivitynum + 1;
-        facebookactivitypopup.close();
-        showExplanation(facebookactivityexplain, facebookadvertiserspopup);
+    //facebook popup 1 (camera and camera roll) → explanation → popup 2
+    facebookcameraallowbtn.addEventListener("click", () => {
+        facebookcameranum = facebookcameranum + 1;
+        facebookcamerapopup.close();
+        showExplanation(facebookcameraexplain, facebookmicrophonepopup);
     });
-    facebookactivitydontallowbtn.addEventListener("click", () => {
-        facebookactivitypopup.close();
-        showExplanation(facebookactivityexplain, facebookadvertiserspopup);
+    facebookcameradontallowbtn.addEventListener("click", () => {
+        facebookcamerapopup.close();
+        showExplanation(facebookcameraexplain, facebookmicrophonepopup);
     });
 
-    //facebook popup 2 (advertisers) → explanation → done
+    //facebook popup 2 (microphone) → explanation → popup 3
+    facebookmicrophoneallowbtn.addEventListener("click", () => {
+        facebookmicrophonenum = facebookmicrophonenum + 1;
+        facebookmicrophonepopup.close();
+        showExplanation(facebookmicrophoneexplain, facebookactivitystatuspopup);
+    });
+    facebookmicrophonedontallowbtn.addEventListener("click", () => {
+        facebookmicrophonepopup.close();
+        showExplanation(facebookmicrophoneexplain, facebookactivitystatuspopup);
+    });
+
+    //facebook popup 3 (activity status) → explanation → popup 4
+    facebookactivitystatusallowbtn.addEventListener("click", () => {
+        facebookactivitystatusnum = facebookactivitystatusnum + 1;
+        facebookactivitystatuspopup.close();
+        showExplanation(facebookactivitystatusexplain, facebookadvertiserspopup);
+    });
+    facebookactivitystatusdontallowbtn.addEventListener("click", () => {
+        facebookactivitystatuspopup.close();
+        showExplanation(facebookactivitystatusexplain, facebookadvertiserspopup);
+    });
+
+    //facebook popup 4 (advertisers) → explanation → done
     facebookadvertisersallowbtn.addEventListener("click", () => {
         facebookadvertisersnum = facebookadvertisersnum + 1;
         facebookadvertiserspopup.close();
@@ -391,22 +491,22 @@ const appPermissions = {
 			{
 				permission: "Always Ask",
 				description: "ChatGPT requests your approval before reading connected app information or making changes. This keeps you in control while still allowing you to approve individual actions.",
-				label: "Recommended"
+				label: "Reasonable"
 			},
 			{
 				permission: "Allow Read Actions",
 				description: "ChatGPT can read information from connected apps without asking each time. It still requests approval before making changes.",
-				label: "Optional"
+				label: "Reasonable"
 			},
 			{
 				permission: "Allow Low-Risk Actions",
 				description: "ChatGPT can complete actions considered low risk automatically. Other actions may still require your approval.",
-				label: "Optional"
+				label: "Use Caution"
 			},
 			{
 				permission: "Allow All Actions",
 				description: "ChatGPT can read information and make supported changes without asking each time. This is convenient, but gives the app broader access to connected accounts.",
-				label: "Optional"
+				label: "Unnecessary"
 			}
 		]
 	},
@@ -416,18 +516,23 @@ const appPermissions = {
 		permissions: [
 			{
 				permission: "Face and Voice",
-				description: '"By uploading videos or photos, using effects and filters, creating personalized content based on your face or voice, going LIVE on TikTok, or using facial age estimation, you agree to your face and voice information being used for these purposes."',
-				label: "Optional"
+				description: "TikTok collects and analyzes face and voice information in your videos, photos, and LIVE videos to help filters fit your facial features or vocal pitch, create digital avatars, improve user safety, and recommend and moderate content.",
+				label: "Reasonable"
+			},
+			{
+				permission: "Facial Age Estimation",
+				description: '"If you choose to use facial age estimation to confirm your age on TikTok, we work with Yoti, a third-party age assurance service, to estimate your age using face information collected from a selfie you submit."',
+				label: "Unnecessary"
 			},
 			{
 				permission: "Location",
 				description: "TikTok uses your location to recommend nearby content, suggest location tags for your posts, and recommend relevant ads. It must be turned on in both your device settings and TikTok's settings.",
-				label: "Optional"
+				label: "Unnecessary"
 			},
 			{
 				permission: "Third-Party Apps",
 				description: "Apps you log in to with TikTok may receive your profile picture, profile name, and public content. You can opt out of sharing some of this before connecting.",
-				label: "Optional"
+				label: "Unnecessary"
 			}
 		]
 	},
@@ -436,14 +541,24 @@ const appPermissions = {
 		name: "Instagram",
 		permissions: [
 			{
-				permission: "Collected Activity and Information",
-				description: "Created content including posts, comments, camera roll content, and audio are used for masks, filters, avatars, effects, and ads.",
-				label: "Optional"
+				permission: "Camera and Camera Roll",
+				description: "Content you provide through the camera feature or your camera roll settings is collected, and information from the camera is used for masks, filters, avatars, and effects.",
+				label: "Use Caution"
+			},
+			{
+				permission: "Microphone (Voice Features)",
+				description: "Content you provide through voice-enabled features is collected, along with audio in content you create, like posts and comments.",
+				label: "Use Caution"
+			},
+			{
+				permission: "Activity Status",
+				description: "Shows people when you're active on the app. It's turned on by default but can be turned off in settings.",
+				label: "Unnecessary"
 			},
 			{
 				permission: "Share Contact Info with Advertisers",
 				description: "Advertisers only get information that identifies you if you give permission, such as by sending them a form with your contact information.",
-				label: "Optional"
+				label: "Unnecessary"
 			}
 		]
 	},
@@ -454,12 +569,12 @@ const appPermissions = {
 			{
 				permission: "Personal Information and Device Data",
 				description: '"We receive and collect your personal information from our marketing and advertising partners...we may automatically collect information about you, your computer, or mobile device, your interactions with the Service, and our communications over time."',
-				label: "Optional"
+				label: "Reasonable"
 			},
 			{
 				permission: "Sign In with Facebook or Google",
 				description: "If you sign in with Facebook or Google, Temu receives your profile photo, user name, and the email address linked to that account.",
-				label: "Optional"
+				label: "Reasonable"
 			}
 		]
 	},
@@ -469,7 +584,7 @@ const appPermissions = {
 		permissions: [{
 			permission: "Photo and Video",
 			description: "Requests permissions if the user wants to access their camera roll.",
-			label: "Recommended"
+			label: "Reasonable"
 		}]
 	},
 	facebook: {
@@ -477,14 +592,24 @@ const appPermissions = {
 		name: "Facebook",
 		permissions: [
 			{
-				permission: "Collected Activity and Information",
-				description: "Created content including posts, comments, camera roll content, and audio are used for masks, filters, avatars, effects, and ads.",
-				label: "Optional"
+				permission: "Camera and Camera Roll",
+				description: "Content you provide through the camera feature or your camera roll settings is collected, and information from the camera is used for masks, filters, avatars, and effects.",
+				label: "Use Caution"
+			},
+			{
+				permission: "Microphone (Voice Features)",
+				description: "Content you provide through voice-enabled features is collected, along with audio in content you create, like posts and comments.",
+				label: "Use Caution"
+			},
+			{
+				permission: "Activity Status",
+				description: "Shows people when you're active on the app. It's turned on by default but can be turned off in settings.",
+				label: "Unnecessary"
 			},
 			{
 				permission: "Share Contact Info with Advertisers",
 				description: "Advertisers only get information that identifies you if you give permission, such as by sending them a form with your contact information.",
-				label: "Optional"
+				label: "Unnecessary"
 			}
 		]
     }
@@ -554,7 +679,7 @@ function renderPermissionOptions(appKey) {
 	app.permissions.forEach((permission) => {
 		const card = document.createElement("article");
 		card.classList.add("permission-option");
-		if (permission.label === "Recommended") {
+		if (permission.label === "Reasonable") {
 			card.classList.add("recommended-option");
 		}
 
@@ -571,14 +696,14 @@ function renderPermissionOptions(appKey) {
 		const description = document.createElement("p");
 		description.textContent = permission.description;
 
-		//recommended / optional tag
+		//reasonable / use caution / unnecessary tag
 		const label = document.createElement("span");
 		label.classList.add("permission-label");
 		label.textContent = permission.label;
 
 		copy.append(title, description, label);
 
-		//show whether the visitor allowed this permission on the dashboard (next to the recommended / optional tag)
+		//show whether the visitor allowed this permission on the dashboard (next to the reasonable / use caution / unnecessary tag)
 		const choice = sessionStorage.getItem(app.name + ": " + permission.permission);
 		if (choice) {
 			const choicelabel = document.createElement("span");
@@ -589,6 +714,7 @@ function renderPermissionOptions(appKey) {
 			choicelabel.textContent = choice;
 			copy.append(choicelabel);
 		}
+
 		card.append(mark, copy);
 		permissionOptions.append(card);
 	});
@@ -625,13 +751,13 @@ if (reviewPermissionsButton && appModal) {
 		} else if (descriptionTitle.textContent === "TikTok") {
 			tiktokfacevoicepopup.showModal();
 		} else if (descriptionTitle.textContent === "Instagram") {
-			instagramactivitypopup.showModal();
+			instagramcamerapopup.showModal();
 		} else if (descriptionTitle.textContent === "Temu") {
 			temupersonalinfopopup.showModal();
 		} else if (descriptionTitle.textContent === "WhatsApp") {
 			whatsappphotospopup.showModal();
 		} else if (descriptionTitle.textContent === "Facebook") {
-			facebookactivitypopup.showModal();
+			facebookcamerapopup.showModal();
 		} else {
 			//any app without a sequence keeps the original single popup
 			appModal.showModal();
@@ -640,7 +766,7 @@ if (reviewPermissionsButton && appModal) {
 }
 
 //remember what the visitor chose in each permission popup
-//(sessionStorage keeps it while the tab is open, so the Why Permissions page can read it)
+//(sessionStorage keeps it while the tab is open, so the why permissions page can read it)
 document.querySelectorAll("dialog.permission-popup:not(#explain-popup)").forEach((popup) => {
     //popup titles look like "TikTok would like to access the following: Location"
     const [appname, permissionname] = popup.querySelector("h2").textContent.split(" would like to access the following: ");
