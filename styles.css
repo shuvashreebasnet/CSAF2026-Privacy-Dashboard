@@ -354,6 +354,27 @@ p {
     font-size: var(--permission-description-size, 20px);
 }
 
+#reset-permission-choices {
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 1px solid #dd2782;
+    border-radius: 6px;
+    background: white;
+    color: black;
+    font: inherit;
+    font-size: var(--permission-description-size, 20px);
+    cursor: pointer;
+}
+
+#reset-permission-choices:hover {
+    background: #f9c5dc;
+}
+
+#reset-permission-choices:focus-visible {
+    outline: 3px solid #7d1748;
+    outline-offset: 2px;
+}
+
 /* Style the 20px, 25px, and 30px description-size choices. */
 .description-size-picker {
     position: fixed;
