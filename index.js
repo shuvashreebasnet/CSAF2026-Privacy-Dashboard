@@ -629,6 +629,7 @@ const permissionAppSelect = document.querySelector("#permission-app-select");
 const selectedAppName = document.querySelector("#selected-app-name");
 const permissionOptions = document.querySelector("#permission-options");
 const descriptionSizeInputs = document.querySelectorAll('input[name="description-size"]');
+const resetPermissionChoicesButton = document.querySelector("#reset-permission-choices");
 
 function showAppDescription(image) {
     const app = appDescriptions[image.dataset.app];
@@ -725,6 +726,17 @@ if (permissionAppSelect) {
 		renderPermissionOptions(permissionAppSelect.value);
 	});
 	renderPermissionOptions(permissionAppSelect.value);
+}
+
+if (resetPermissionChoicesButton && permissionAppSelect) {
+	resetPermissionChoicesButton.addEventListener("click", () => {
+		Object.values(appPermissions).forEach((app) => {
+			app.permissions.forEach((permission) => {
+				sessionStorage.removeItem(`${app.name}: ${permission.permission}`);
+			});
+		});
+		renderPermissionOptions(permissionAppSelect.value);
+	});
 }
 
 // Apply the selected size to permission descriptions and the explanation title/verdict.
